@@ -49,13 +49,22 @@ class ImageTile extends StatelessWidget {
             padding: padding ?? const EdgeInsets.only(left: 15),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.asset(image, fit: fit),
+              child: Image.asset(
+                image,
+                fit: fit,
+                frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+                  if (frame == null) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  return child;
+                },
+              ),
             ),
           ),
           SizedBox(height: title != null ? 5 : 0),
           Visibility(
             visible: title != null,
-            child: Text("$title", style: MyThemes.of(context).subtitle1),
+            child: Text("${title}", style: MyThemes.of(context).subtitle1),
           ),
         ],
       ),
