@@ -1,6 +1,7 @@
 // ignore_for_file: overridden_fields, annotate_overrides
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 abstract class MyThemes {
   static MyThemes of(BuildContext context) {
@@ -22,18 +23,10 @@ abstract class MyThemes {
 
   String get title1Family => typography.title1Family;
   TextStyle get title1 => typography.title1;
-  String get title2Family => typography.title2Family;
-  TextStyle get title2 => typography.title2;
-  String get title3Family => typography.title3Family;
-  TextStyle get title3 => typography.title3;
   String get subtitle1Family => typography.subtitle1Family;
   TextStyle get subtitle1 => typography.subtitle1;
-  String get subtitle2Family => typography.subtitle2Family;
-  TextStyle get subtitle2 => typography.subtitle2;
   String get bodyText1Family => typography.bodyText1Family;
   TextStyle get bodyText1 => typography.bodyText1;
-  String get bodyText2Family => typography.bodyText2Family;
-  TextStyle get bodyText2 => typography.bodyText2;
 
   Typography get typography => ThemeTypography(this);
 }
@@ -56,18 +49,10 @@ class LightModeTheme extends MyThemes {
 abstract class Typography {
   String get title1Family;
   TextStyle get title1;
-  String get title2Family;
-  TextStyle get title2;
-  String get title3Family;
-  TextStyle get title3;
   String get subtitle1Family;
   TextStyle get subtitle1;
-  String get subtitle2Family;
-  TextStyle get subtitle2;
   String get bodyText1Family;
   TextStyle get bodyText1;
-  String get bodyText2Family;
-  TextStyle get bodyText2;
 }
 
 class ThemeTypography extends Typography {
@@ -75,52 +60,21 @@ class ThemeTypography extends Typography {
 
   final MyThemes theme;
 
-  String get title1Family => 'Roboto';
-  TextStyle get title1 => TextStyle(
-        color: theme.primaryText,
-        fontFamily: 'Roboto-Regular',
-        fontSize: 24,
-        fontWeight: FontWeight.w600,
-      );
-  String get title2Family => 'Roboto';
-  TextStyle get title2 => TextStyle(
-        fontFamily: 'Roboto-Regular',
-        color: theme.secondaryText,
-        fontWeight: FontWeight.w600,
+  String get title1Family => 'Poppins';
+  TextStyle get title1 => GoogleFonts.poppins(
+        color: theme.primaryBackground,
         fontSize: 22,
+        fontWeight: FontWeight.w500,
       );
-  String get title3Family => 'Roboto';
-  TextStyle get title3 => TextStyle(
-        fontFamily: 'Roboto-Regular',
+  String get subtitle1Family => 'Poppins';
+  TextStyle get subtitle1 => GoogleFonts.poppins(
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 20,
+        fontWeight: FontWeight.w400,
+        fontSize: 15,
       );
-  String get subtitle1Family => 'Roboto';
-  TextStyle get subtitle1 => TextStyle(
-        fontFamily: 'Roboto-Regular',
+  String get bodyText1Family => 'Poppins';
+  TextStyle get bodyText1 => GoogleFonts.poppins(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 18,
-      );
-  String get subtitle2Family => 'Roboto';
-  TextStyle get subtitle2 => TextStyle(
-        fontFamily: 'Roboto-Regular',
-        color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 16,
-      );
-  String get bodyText1Family => 'Roboto';
-  TextStyle get bodyText1 => TextStyle(
-        fontFamily: 'Roboto-Regular',
-        color: theme.primaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 14,
-      );
-  String get bodyText2Family => 'Roboto';
-  TextStyle get bodyText2 => TextStyle(
-        fontFamily: 'Roboto-Regular',
-        color: theme.secondaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14,
       );

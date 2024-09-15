@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:widget_arrows/widget_arrows.dart';
 
@@ -11,6 +12,7 @@ class ImageTile extends StatelessWidget {
   final List<String>? targetIds;
   final double? height;
   final double? width;
+  final String? title;
   final EdgeInsetsGeometry? padding;
   final BoxFit? fit;
   final AlignmentGeometry sourceAnchor;
@@ -22,6 +24,7 @@ class ImageTile extends StatelessWidget {
     this.targetIds,
     this.height,
     this.width,
+    this.title,
     this.padding,
     this.fit = BoxFit.contain,
     this.sourceAnchor = Alignment.centerLeft,
@@ -31,26 +34,30 @@ class ImageTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 30),
-      child: ArrowElement(
-        id: arrowId,
-        sourceAnchor: sourceAnchor,
-        targetAnchor: targetAnchor,
-        targetIds: targetIds,
-        color: MyThemes.of(context).primaryColor,
-        child: Container(
-          height: height ?? ScreenSizes.getDeviceHeight(context) * 0.16,
-          width: width ?? ScreenSizes.getDeviceWidth(context) * 0.16,
-          padding: padding??const EdgeInsets.only(left: 15),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: Image.asset(
-              image,
-              fit: fit,
+    return ArrowElement(
+      id: arrowId,
+      sourceAnchor: sourceAnchor,
+      targetAnchor: targetAnchor,
+      targetIds: targetIds,
+      color: MyThemes.of(context).primaryColor,
+      child: Column(
+        children: [
+          Container(
+            height: height ?? ScreenSizes.getDeviceHeight(context) * 0.16,
+            width: width ?? ScreenSizes.getDeviceWidth(context) * 0.16,
+            constraints: const BoxConstraints(minWidth: 150, maxHeight: 150),
+            padding: padding ?? const EdgeInsets.only(left: 15),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(image, fit: fit),
             ),
           ),
-        ),
+          SizedBox(height: title != null ? 5 : 0),
+          Visibility(
+            visible: title != null,
+            child: Text("$title", style: MyThemes.of(context).subtitle1),
+          ),
+        ],
       ),
     );
   }
