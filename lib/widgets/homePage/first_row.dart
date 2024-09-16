@@ -13,7 +13,7 @@ class FirstRow extends StatelessWidget {
         ImageTile(
           arrowId: 'sinal-turismo',
           image: "images/sinal_turismo.jpg",
-          title: "Turísmo",
+          title: "Turismo",
           padding: EdgeInsets.only(right: 15),
         ),
         Spacer(),

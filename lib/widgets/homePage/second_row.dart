@@ -17,7 +17,7 @@ class SecondRow extends StatelessWidget {
       children: [
         InkWell(
           onTap: () => openTouristSportInformationDialog(
-            title: "Museu Coripos",
+            title: "Museu Coripós",
             images: {
               'image': "images/museu_coripos.jpg",
               'image_sinal': "images/sinal_museu.jpg",
@@ -59,7 +59,7 @@ class SecondRow extends StatelessWidget {
         ),
         InkWell(
           onTap: () => openTouristSportInformationDialog(
-            title: "Pedra Mansazeira",
+            title: "Pedra Masanzeira",
             images: {
               'image': "images/pedra_mansazeira.jpg",
               'image_sinal': "images/sinal_pedra_mansazeira.jpg",

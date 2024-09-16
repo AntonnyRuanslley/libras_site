@@ -70,7 +70,7 @@ class _TourisSpotInformationState extends State<TourisSpotInformation> {
           ),
         ),
         Text(
-          "Sinal soletrado",
+          "Datilologia",
           style: MyThemes.of(context).subtitle1.copyWith(fontSize: 18),
         ),
         const SizedBox(height: 30),

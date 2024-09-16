@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
               ),
               Flexible(
                 child: Text(
-                  "Glossário de sinais/termos dos espaços turísticos de Santa Maria da Boa Vista, Sertão - Pernambuco",
+                  "Glossário de sinais-termo dos principais espaços turísticos de Santa Maria da Boa Vista-PE",
                   style: MyThemes.of(context).title1,
                 ),
               ),
