@@ -1,0 +1,62 @@
+--- build/web/flutter_service_worker.js.orig	2023-04-29 02:11:07.494058477 +0800
++++ build/web/flutter_service_worker.js	2023-04-29 02:11:53.397627750 +0800
+@@ -42,21 +42,6 @@
+ "pkg/package.json": "6e2eea889f2b73d12c3ab5d4c72edef1"};
+ // The application shell files that are downloaded before a service worker can
+ // start.
+-const CORE = ["main.dart.js",
+-"index.html",
+-"assets/AssetManifest.json",
+-"assets/FontManifest.json"];
+-
+-// During install, the TEMP cache is populated with the application shell files.
+-self.addEventListener("install", (event) => {
+-  self.skipWaiting();
+-  return event.waitUntil(
+-    caches.open(TEMP).then((cache) => {
+-      return cache.addAll(
+-        CORE.map((value) => new Request(value, {'cache': 'reload'})));
+-    })
+-  );
+-});
+ // During activate, the cache is populated with the temp files downloaded in
+ // install. If this service worker is upgrading from one with a saved
+ // MANIFEST, then use this to retain unchanged resource files.
+@@ -117,6 +102,7 @@
+     }
+   }());
+ });
++var IN_PROCESSING_REQUESTS = {};
+ // The fetch handler redirects requests for RESOURCE files to the service
+ // worker cache.
+ self.addEventListener("fetch", (event) => {
+@@ -146,12 +132,27 @@
+       return cache.match(event.request).then((response) => {
+         // Either respond with the cached resource, or perform a fetch and
+         // lazily populate the cache only if the resource was successfully fetched.
+-        return response || fetch(event.request).then((response) => {
++
++        if (response) {
++          return response;
++        }
++
++        if (IN_PROCESSING_REQUESTS[key]) {
++          return IN_PROCESSING_REQUESTS[key].clone();
++        }
++
++        return fetch(event.request).then((response) => {
+           if (response && Boolean(response.ok)) {
+-            cache.put(event.request, response.clone());
++
++            cache.put(event.request, response.clone())
++                .then(() => delete IN_PROCESSING_REQUESTS[key]);
+           }
++
++          IN_PROCESSING_REQUESTS[key] = response.clone();
++
+           return response;
+         });
++
+       })
+     })
+   );

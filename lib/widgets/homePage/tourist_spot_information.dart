@@ -32,7 +32,7 @@ class _TourisSpotInformationState extends State<TourisSpotInformation> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Image.asset(
-                  widget.images['image']!,
+                  "assets/${widget.images['image']}",
                   fit: BoxFit.contain,
                 ),
               ),
@@ -45,7 +45,7 @@ class _TourisSpotInformationState extends State<TourisSpotInformation> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Image.asset(
-                      widget.images['image_sinal']!,
+                      "assets/${widget.images['image_sinal']}",
                       fit: BoxFit.contain,
                     ),
                   ),
@@ -64,7 +64,7 @@ class _TourisSpotInformationState extends State<TourisSpotInformation> {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Image.asset(
-              widget.images['image_sinal_soletrado']!,
+              "assets/${widget.images['image_sinal_soletrado']!}",
               fit: BoxFit.contain,
             ),
           ),

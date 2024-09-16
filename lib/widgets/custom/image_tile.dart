@@ -50,7 +50,7 @@ class ImageTile extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.asset(
-                image,
+                "assets/$image",
                 fit: fit,
                 frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
                   if (frame == null) {
