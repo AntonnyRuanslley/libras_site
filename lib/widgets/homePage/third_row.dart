@@ -10,8 +10,9 @@ class ThirdRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Wrap(
+      spacing: 25,
+      runSpacing: 25,
       children: [
         InkWell(
           onTap: () => openTouristSportInformationDialog(
@@ -28,6 +29,7 @@ class ThirdRow extends StatelessWidget {
           child: Column(
             children: [
               Row(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   ImageTile(
                     arrowId: 'espaco-serenata',
@@ -69,6 +71,7 @@ class ThirdRow extends StatelessWidget {
           child: Column(
             children: [
               Row(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   ImageTile(
                     arrowId: 'casaroes',
@@ -110,6 +113,7 @@ class ThirdRow extends StatelessWidget {
           child: Column(
             children: [
               Row(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   ImageTile(
                     arrowId: 'orla',

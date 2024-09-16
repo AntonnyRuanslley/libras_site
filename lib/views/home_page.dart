@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:widget_arrows/widget_arrows.dart';
 
@@ -30,9 +31,11 @@ class _HomePageState extends State<HomePage> {
                 Icons.book,
                 color: MyThemes.of(context).primaryBackground,
               ),
-              Text(
-                "Glossário de sinais/termos dos espaços turísticos de Santa Maria da Boa Vista, Sertão - Pernambuco",
-                style: MyThemes.of(context).title1,
+              Flexible(
+                child: Text(
+                  "Glossário de sinais/termos dos espaços turísticos de Santa Maria da Boa Vista, Sertão - Pernambuco",
+                  style: MyThemes.of(context).title1,
+                ),
               ),
               Icon(
                 Icons.book,
