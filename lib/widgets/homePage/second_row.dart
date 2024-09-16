@@ -94,7 +94,7 @@ class SecondRow extends StatelessWidget {
               ),
               const SizedBox(height: 5),
               Text(
-                "Pedra Mansazeira",
+                "Pedra Masanzeira",
                 style: MyThemes.of(context).subtitle1,
               ),
             ],
